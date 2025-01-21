@@ -58,6 +58,13 @@ class DatabaseController {
 		]);
 		return $this->dbh->lastInsertId();
 	}
+	public function updateTaskReminderSent($id) {
+		$this->stmt = $this->dbh->prepare(
+			'UPDATE task SET reminder_sent=current_timestamp() WHERE id=:id'
+		);
+		$this->stmt->execute([':id' => $id]);
+		return $this->dbh->lastInsertId();
+	}
 	public function deleteTask($id) {
 		$this->stmt = $this->dbh->prepare('DELETE FROM task WHERE id=:id');
 		return $this->stmt->execute([':id' => $id]);

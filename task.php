@@ -15,7 +15,7 @@ $tasks = $db->getTasks();
 			$_POST['title'], $_POST['description'],
 			$_POST['assignee_email'],
 			empty(trim($due)) ? null : $due,
-			empty($_POST['reminder']) ? null : $_POST['reminder'],
+			empty($_POST['reminder']) ? null : $_POST['reminder']*60*60*24,
 			empty(trim($done)) ? null : $done,
 			$_POST['done_note'],
 			$token
@@ -56,7 +56,7 @@ $tasks = $db->getTasks();
 			$_POST['id'], $_POST['title'], $_POST['description'],
 			$_POST['assignee_email'],
 			empty(trim($due)) ? null : $due,
-			empty($_POST['reminder']) ? null : $_POST['reminder'],
+			empty($_POST['reminder']) ? null : $_POST['reminder']*60*60*24,
 			empty(trim($done)) ? null : $done,
 			$_POST['done_note'],
 			$token
@@ -129,8 +129,8 @@ $tasks = $db->getTasks();
 
 						<label>Erinnerung:</label>
 						<div class='multiinput'>
-							<input type='number' name='reminder' value='<?php echo htmlspecialchars($selectedTask ? $selectedTask['reminder'] : ''); ?>'>
-							<span>Stunden vorher</span>
+							<input type='number' name='reminder' value='<?php echo htmlspecialchars(($selectedTask&&!empty($selectedTask['reminder'])) ? $selectedTask['reminder']/24/60/60 : ''); ?>'>
+							<span>Tage vorher</span>
 						</div>
 
 						<label>Erledigt:</label>

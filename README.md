@@ -20,6 +20,7 @@ The PHP PEAR mail library is required (package `php-mail` and `php-mail-mime` on
 4. Make sure that your mail system is correctly set up on your server so that the app can send invitation mails.
    - On managed servers, this is probably already done by your hosting provider.
 5. (optional) If you are using this for a private event, you probably want to lock the access to this webapp with a [.htaccess/.htpasswd file](https://wiki.selfhtml.org/wiki/Webserver/htaccess/Zugriffskontrolle).
+6. Create a cron job for executing `reminder.php` every minute to send reminder mails.
 
 ## Usage
 1. Open `task.php` in your webbrowser and log in with the username/password you chose in the installation step. Create your tasks.

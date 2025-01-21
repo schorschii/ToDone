@@ -1,8 +1,9 @@
 <?php
 
-const TITLE = 'ToDos Frühlingskonzert';
-
 /*** GENERAL CONFIGURATION ***/
+const TITLE = 'ToDos Frühlingskonzert';
+const BASE_URL = 'https://example.com/todone';
+
 // date/time placeholders as defined in https://www.php.net/manual/de/datetime.format.php
 const DATE_FORMAT = 'Y-m-d';
 const TIME_FORMAT = 'H:i';
