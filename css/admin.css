@@ -30,34 +30,6 @@
 	align-items: start;
 }
 
-#tblTasks, #tblEvents {
-	width: 100%;
-	border-collapse: separate;
-	border-spacing: 0px;
-}
-#tblTasks tr th:last-child,
-#tblTasks tr td:last-child {
-	text-align: center;
-	width: 1%;
-}
-.checkedin,
-.checkedin {
-	background-color: rgba(80,220,80,0.4);
-}
-.checkedout,
-.checkedout {
-	background-color: rgba(220,40,40,0.4);
-}
-.revoked,
-.revoked {
-	text-decoration: line-through;
-	opacity: 0.4;
-}
-#tblTasks tbody tr:hover th,
-#tblTasks tbody tr:hover td{
-	background-color: rgba(150,150,150,0.4);
-}
-
 .adminForm {
 	width: 100%;
 	display: grid;

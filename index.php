@@ -51,10 +51,6 @@ try {
 	<head>
 		<?php require_once('head.inc.php'); ?>
 		<title><?php echo htmlspecialchars(TITLE); ?> | ToDone</title>
-		<style>
-			.red { color:red; }
-			.green { color: green; }
-		</style>
 		<script>
 			function takeTask(id) {
 				email = prompt('Bitte Ihre E-Mailadresse eingeben');
@@ -103,8 +99,7 @@ try {
 							<tr>
 								<th>Titel</th>
 								<th>Person</th>
-								<th>Fällig am</th>
-								<th>Erledigt am</th>
+								<th>Fällig/erledigt am</th>
 								<th></th>
 							</tr>
 						</thead>
@@ -114,22 +109,22 @@ try {
 								<td>
 									<?php echo htmlspecialchars($task['title']); ?>
 									<?php if($task['description']) { ?>
-										<img src='img/message.svg' title='<?php echo htmlspecialchars($task['description'],ENT_QUOTES); ?>' onclick='alert(this.title)'>
+										<img class='comment' src='img/message.svg' title='<?php echo htmlspecialchars($task['description'],ENT_QUOTES); ?>' onclick='alert(this.title)'>
 									<?php } ?>
 								</td>
 								<td>
 									<?php if($task['assignee_email']) echo htmlspecialchars($task['assignee_email']); else { ?>
-										<a href='#' onclick='takeTask(<?php echo $task['id']; ?>)'>übernehmen</a>
+										<a href='#' onclick='takeTask(<?php echo $task['id']; ?>); return false'>übernehmen</a>
 									<?php } ?>
 								</td>
-								<td class='<?php if($task['due'] && strtotime($task['due']) < time() && !$task['done']) echo 'red'; ?>'>
+								<td class='<?php if($task['due'] && strtotime($task['due']) < time() && !$task['done']) echo 'red'; elseif($task['due'] && strtotime($task['due']) < time() && $task['done']) echo 'green'; ?>'>
 									<?php if($task['due']) echo date(DATE_FORMAT, strtotime($task['due'])); ?>
-								</td>
-								<td>
-									<?php if($task['done']) echo date(DATE_FORMAT, strtotime($task['done'])); ?>
-									<?php if($task['done_note']) { ?>
-										<img src='img/message.svg' title='<?php echo htmlspecialchars($task['done_note'],ENT_QUOTES); ?>' onclick='alert(this.title)'>
-									<?php } ?>
+									<div class='done'>
+										<?php if($task['done']) echo date(DATE_FORMAT, strtotime($task['done'])); ?>
+										<?php if($task['done_note']) { ?>
+											<img class='comment' src='img/message.svg' title='<?php echo htmlspecialchars($task['done_note'],ENT_QUOTES); ?>' onclick='alert(this.title)'>
+										<?php } ?>
+									</div>
 								</td>
 								<td class='actions'><button name='edit' value='<?php echo $task['id']; ?>'><img src='img/edit.svg'></button></td>
 							</tr>

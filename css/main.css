@@ -21,7 +21,7 @@ html, body {
 	min-height: 100%;
 }
 #splash {
-	width: 680px;
+	width: 720px;
 	padding: 40px;
 	border-radius: 2px;
 	background-color: rgba(255,255,255,1);
@@ -72,10 +72,32 @@ div.contentbox.small > img.contentbox-embleme {
 	z-index: -1;
 }
 
-#tblReservation {
+#tblTasks {
+	width: 100%;
 	border-collapse: separate;
-	border-spacing: 2px;
+	border-spacing: 0px;
 }
+#tblTasks tr th,
+#tblTasks tr td {
+	padding: 6px;
+}
+#tblTasks tr th:last-child,
+#tblTasks tr td:last-child {
+	text-align: center;
+	width: 1%;
+}
+#tblTasks tbody tr:hover th,
+#tblTasks tbody tr:hover td{
+	background-color: rgba(150,150,150,0.4);
+}
+#tblTasks img.comment {
+	display: inline;
+	vertical-align: middle;
+	cursor: pointer;
+}
+.red { color:red; }
+.green { color: green; }
+.done { opacity: 0.5; }
 table th {
 	text-align: left;
 }

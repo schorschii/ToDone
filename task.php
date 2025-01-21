@@ -149,7 +149,8 @@ $tasks = $db->getTasks();
 
 						<?php if($selectedTask) { ?>
 							<input type='hidden' name='id' value='<?php echo htmlspecialchars($selectedTask['id']); ?>'>
-							<button id='btnDelete' name='action' value='task_delete' class='primary' onclick='return confirm("Sind Sie sicher?")'>Löschen</button>
+							<input type='submit' name='action' value='task_edit' style='display:none'>
+							<button id='btnDelete' name='action' value='task_delete' class='' onclick='return confirm("Sind Sie sicher?")'>Löschen</button>
 							<button id='btnSave' name='action' value='task_edit' class='primary'>Änderungen speichern</button>
 						<?php } else { ?>
 							<button id='btnSave' name='action' value='task_create' class='primary'>Erstellen</button>
