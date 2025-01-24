@@ -95,9 +95,28 @@ div.contentbox.small > img.contentbox-embleme {
 	vertical-align: middle;
 	cursor: pointer;
 }
-.red { color:red; }
-.green { color: green; }
-.done { opacity: 0.5; }
+.red {
+	color:red;
+}
+.green {
+	color: green;
+}
+div.done, span.done,
+tr.done td > div, tr.done td > span {
+	opacity: 0.4;
+}
+tr.done td:first-child {
+	position: relative;
+}
+tr.done td:first-child::after {
+	content: '';
+	position: absolute;
+	top: 0; bottom: 0; left: 0px; right: 0px;
+	background-image: url('../img/check.svg');
+	background-position: center;
+	background-repeat: no-repeat;
+	pointer-events: none;
+}
 table th {
 	text-align: left;
 }

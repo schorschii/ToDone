@@ -105,25 +105,31 @@ try {
 						</thead>
 						<tbody>
 							<?php foreach($tasks as $task) { ?>
-							<tr>
+							<tr class='<?php if($task['done']) echo 'done'; ?>'>
 								<td>
+									<div>
 									<?php echo htmlspecialchars($task['title']); ?>
 									<?php if($task['description']) { ?>
 										<img class='comment' src='img/message.svg' title='<?php echo htmlspecialchars($task['description'],ENT_QUOTES); ?>' onclick='alert(this.title)'>
 									<?php } ?>
+									</div>
 								</td>
 								<td>
+									<div>
 									<?php if($task['assignee_email']) echo htmlspecialchars($task['assignee_email']); else { ?>
 										<a href='#' onclick='takeTask(<?php echo $task['id']; ?>); return false'>übernehmen</a>
 									<?php } ?>
+									</div>
 								</td>
 								<td class='<?php if($task['due'] && strtotime($task['due']) < time() && !$task['done']) echo 'red'; elseif($task['due'] && strtotime($task['due']) < time() && $task['done']) echo 'green'; ?>'>
-									<?php if($task['due']) echo date(DATE_FORMAT, strtotime($task['due'])); ?>
-									<div class='done'>
-										<?php if($task['done']) echo date(DATE_FORMAT, strtotime($task['done'])); ?>
-										<?php if($task['done_note']) { ?>
-											<img class='comment' src='img/message.svg' title='<?php echo htmlspecialchars($task['done_note'],ENT_QUOTES); ?>' onclick='alert(this.title)'>
-										<?php } ?>
+									<div>
+										<?php if($task['due']) echo date(DATE_FORMAT, strtotime($task['due'])); ?>
+										<div class='done'>
+											<?php if($task['done']) echo date(DATE_FORMAT, strtotime($task['done'])); ?>
+											<?php if($task['done_note']) { ?>
+												<img class='comment' src='img/message.svg' title='<?php echo htmlspecialchars($task['done_note'],ENT_QUOTES); ?>' onclick='alert(this.title)'>
+											<?php } ?>
+										</div>
 									</div>
 								</td>
 								<td class='actions'><button name='edit' value='<?php echo $task['id']; ?>'><img src='img/edit.svg'></button></td>
